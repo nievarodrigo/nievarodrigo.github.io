@@ -3,7 +3,7 @@ export const SITE = {
   author: "Rodrigo Nieva",
   profile: "https://github.com/nievarodrigo",
   desc: "Ingeniería en Informática. Enfocado en Backend",
-  title: "Backend ss",
+  title: "Rodrigo Nieva portfolio",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,
