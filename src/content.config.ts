@@ -5,6 +5,11 @@ import { SITE } from "@/config";
 export const BLOG_PATH = "src/data/blog";
 
 const blog = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    featured: z.boolean().optional(),
+    repoURL: z.string().url().optional()
   loader: glob({ pattern: "**/[^_]*.md", base: `./${BLOG_PATH}` }),
   schema: ({ image }) =>
     z.object({
