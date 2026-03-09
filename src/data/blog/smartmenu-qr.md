@@ -10,6 +10,7 @@ tags:
   - FastAPI
   - Real-time
 description: "Sistema orientado a resolver flujos de venta ineficientes en mostrador, digitalizando el pedido para evitar el abandono de clientes mediante sincronización en tiempo real."
+repoURL: https://github.com/rodrosn0w/autoservicioQR
 ---
 
 ## Motivación
