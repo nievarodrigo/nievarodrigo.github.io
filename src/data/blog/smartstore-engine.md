@@ -4,6 +4,7 @@ author: Rodrigo Nieva
 pubDatetime: 2025-10-26T15:00:00Z
 slug: retail-core-system
 featured: true
+repoURL: https://github.com/nievarodrigo/smartstore-engine
 tags:
   - FastAPI
   - MySQL
