@@ -21,8 +21,7 @@ export const SITE = {
   lang: "es", // html lang code. Set this empty and default will be "en"
   timezone: "America/Argentina/Buenos_Aires", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 } as const;
-// En src/config.ts
-// En src/config.ts
+
 export const NAV_LINKS = [
   // Se eliminó la entrada de "Sobre mí"
   {
