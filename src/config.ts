@@ -23,7 +23,6 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  // Se eliminó la entrada de "Sobre mí"
   {
     href: "/#skills",
     active: true,
@@ -33,11 +32,6 @@ export const NAV_LINKS = [
     href: "/posts/",
     active: true,
     text: "Proyectos",
-  },
-  {
-    href: "/#experience",
-    active: true,
-    text: "Experiencia",
   },
   {
     href: "/#education",
