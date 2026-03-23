@@ -19,10 +19,8 @@ Este sistema transaccional fue diseñado para transformar la operativa de un com
 ## Características Técnicas & Funcionalidades
 - **Backend & Data:** Construido con **FastAPI** y **MySQL** (SQL puro), priorizando el rendimiento y la precisión en el cálculo de totales y auditorías.
 - **Gestión de Créditos (Fiados):** Módulo especializado para el seguimiento de deudores, con visualización de estados de cuenta, montos adeudados y cronología de deudas por cliente.
-- **Control de Inventario:** Escaneo de productos, actualización de stock en tiempo real y lógica de precios dinámicos basada en la fluctuación de divisas.
-- **Reporting Avanzado:** - Gráficas de volumen de venta y métricas de rendimiento diarias/mensuales.
-  - Filtros granulares por fecha y cantidad de ventas.
-  - Control de devoluciones y arqueo de caja automatizado.
+- **Control de Inventario:** Escaneo de productos, actualización de stock en tiempo real y alerta automática de stock crítico.
+- **Reporting Avanzado:** Gráficas de volumen de venta y métricas de rendimiento diarias/mensuales, filtros por fecha y arqueo de caja diario.
 
 ## Impacto
 - **70% de optimización** en el procesamiento de inventario.
