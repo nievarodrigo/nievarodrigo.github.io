@@ -1,105 +1,380 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
-import Card from "@/components/Card.astro";
-import getSortedPosts from "@/utils/getSortedPosts";
+import "@/styles/portfolio.css";
 
-const posts = await getCollection("blog");
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
+const projects = [
+  {
+    number: "01",
+    type: "SaaS · Producto propio",
+    title: "FiloDesk",
+    description:
+      "Una plataforma de gestión para barberías, peluquerías y centros de estética. Turnos, caja, ventas, gastos, stock, equipo y métricas en un solo lugar.",
+    impact:
+      "Producto end-to-end: estrategia, UX, arquitectura, pagos y operación.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Rebill", "Mercado Pago"],
+    image: "/filodesk-preview.png",
+    imageAlt: "Página principal de FiloDesk",
+    live: "https://filodesk.app",
+    accent: "gold",
+  },
+  {
+    number: "02",
+    type: "Realtime · Producto propio",
+    title: "Juntadita",
+    description:
+      "Una web app de juegos en vivo para fiestas. Los invitados entran desde el celular y participan en trivia, bingo, votaciones y desafíos controlados por un host.",
+    impact:
+      "Experiencia multijugador, sincronización en tiempo real y pagos premium.",
+    stack: ["Next.js", "Supabase Realtime", "TypeScript", "Framer Motion"],
+    image: "/juntadita-preview.png",
+    imageAlt: "Página principal de Juntadita",
+    live: "https://michucumple.vercel.app",
+    accent: "violet",
+  },
+  {
+    number: "03",
+    type: "Diseño web · Servicio",
+    title: "Landings que venden",
+    description:
+      "Diseño y desarrollo landings a medida para negocios reales: identidad, mensaje, experiencia responsive y conversión directa a WhatsApp.",
+    impact: "De la idea al sitio publicado, sin plantillas genéricas.",
+    stack: ["Estrategia", "Copy", "UI/UX", "HTML · CSS · JS", "Vercel"],
+    image: "/sol-pilates-preview.png",
+    imageAlt: "Landing page de Sol Pilates",
+    live: "https://solpilates.vercel.app",
+    accent: "sand",
+  },
+];
+
+const capabilities = [
+  {
+    number: "01",
+    title: "Producto",
+    text: "Convierto una necesidad difusa en una experiencia clara, usable y lista para validar.",
+  },
+  {
+    number: "02",
+    title: "Ingeniería",
+    text: "Construyo frontends, APIs, datos, permisos, pagos y operaciones con foco en confiabilidad.",
+  },
+  {
+    number: "03",
+    title: "Lanzamiento",
+    text: "Trabajo el mensaje, la conversión, el deploy y los detalles que hacen que un producto se sienta terminado.",
+  },
+];
 ---
 
-<Layout>
-  <Header />
-  <main id="main-content" class="app-layout">
-    <section id="hero" class="py-16 border-b border-border">
-      <div class="text-accent text-xs tracking-widest uppercase mb-4">> Backend Developer</div>
-      <h1 class="text-5xl font-bold text-white mb-6">Rodrigo Nieva</h1>
-      <h3 class="text-2xl font-bold text-white mb-6">PYTHON // JAVA //   SQL</h3>
-      <p class="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-        Desarrollador Backend especializado en construir arquitecturas escalables y sistemas orientados a datos. 
-        Diseño APIs desde cero y transformo flujos de datos complejos en productos funcionales que potencian la operatividad del negocio.
-      </p>
-      <div class="mt-8 flex gap-4">
-        <a href="#projects" class="bg-accent text-black px-6 py-2 font-bold uppercase text-xs tracking-widest">Ver proyectos</a>
-        <a href="#contact" class="border border-border px-6 py-2 text-xs uppercase tracking-widest text-muted hover:text-accent">Contacto</a>
+<Layout
+  title="Rodrigo Nieva — Product Builder & Software Engineer"
+  description="Diseño y desarrollo productos digitales, SaaS, experiencias realtime y landings que convierten."
+>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="portfolio-header" data-header>
+    <div class="portfolio-shell header-inner">
+      <a class="wordmark" href="#inicio" aria-label="Rodrigo Nieva, inicio">
+        <span>RN</span><i></i>
+      </a>
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#capacidades">Qué hago</a>
+        <a href="#sobre-mi">Sobre mí</a>
+      </nav>
+      <a class="header-contact" href="mailto:nievarodrigo40@gmail.com"
+        >Hablemos <span>↗</span></a
+      >
+      <button
+        class="mobile-menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        data-menu-button
+      >
+        <span class="sr-only">Abrir menú</span><i></i><i></i>
+      </button>
+    </div>
+    <nav
+      class="mobile-nav"
+      id="mobile-nav"
+      aria-label="Navegación móvil"
+      data-mobile-nav
+    >
+      <a href="#proyectos">Proyectos</a><a href="#capacidades">Qué hago</a><a
+        href="#sobre-mi">Sobre mí</a
+      ><a href="mailto:nievarodrigo40@gmail.com">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="hero-grid portfolio-shell">
+        <div class="hero-copy">
+          <p class="availability">
+            <span></span>Disponible para proyectos seleccionados
+          </p>
+          <h1>
+            Ideas que se<br />convierten en<br /><em>productos reales.</em>
+          </h1>
+          <p class="hero-lead">
+            Soy Rodrigo Nieva. Diseño, construyo y lanzo productos digitales:
+            desde SaaS y experiencias en tiempo real hasta sitios que convierten
+            visitas en clientes.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#proyectos"
+              >Explorar proyectos <span>↓</span></a
+            >
+            <a
+              class="button button-ghost"
+              href="mailto:nievarodrigo40@gmail.com"
+              >Contame tu idea <span>↗</span></a
+            >
+          </div>
+        </div>
+
+        <div class="hero-stage" aria-label="Resumen profesional">
+          <div class="stage-orbit orbit-a"></div><div
+            class="stage-orbit orbit-b"
+          >
+          </div>
+          <div class="stage-card stage-card-main">
+            <span class="stage-kicker">Product builder</span>
+            <strong>Diseño<br />+ Código<br />+ Negocio</strong>
+            <i>Buenos Aires · AR</i>
+          </div>
+          <div class="stage-card stage-card-stat">
+            <strong>3</strong><span
+              >productos destacados<br />llevados a producción</span
+            >
+          </div>
+          <div class="stage-card stage-card-stack">
+            <span>STACK ACTUAL</span><strong
+              >TypeScript · Next.js<br />Supabase · PostgreSQL<br />Python ·
+              APIs · IA</strong
+            >
+          </div>
+          <span class="stage-note">BUILD → LEARN → SHIP</span>
+        </div>
+      </div>
+      <div class="hero-marquee" aria-hidden="true">
+        <div>
+          <span>PRODUCTOS DIGITALES</span><i>✦</i><span>SOFTWARE A MEDIDA</span
+          ><i>✦</i><span>LANDINGS QUE CONVIERTEN</span><i>✦</i><span
+            >PRODUCTOS DIGITALES</span
+          ><i>✦</i><span>SOFTWARE A MEDIDA</span>
+        </div>
       </div>
     </section>
 
-    <section id="skills" class="py-16 border-b border-border">
-      <h2 class="text-2xl font-bold text-white mb-8">// Tecnologías</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="p-6 bg-surface border border-border">
-          <h3 class="text-accent text-sm font-bold mb-4">BACKEND</h3>
-          <p class="text-xs text-muted leading-loose">Python, FastAPI, SQLAlchemy, Pydantic, Java, SpringBoot, JUnit</p>
+    <section
+      class="projects section"
+      id="proyectos"
+      aria-labelledby="projects-title"
+    >
+      <div class="portfolio-shell section-heading">
+        <p class="section-label">01 / Trabajo seleccionado</p>
+        <div>
+          <h2 id="projects-title">
+            Productos con<br /><em>impacto real.</em>
+          </h2><p>
+            No son ejercicios de curso. Son ideas diseñadas, construidas y
+            publicadas para resolver problemas concretos.
+          </p>
         </div>
-        <div class="p-6 bg-surface border border-border">
-          <h3 class="text-accent text-sm font-bold mb-4">DATOS</h3>
-          <p class="text-xs text-muted leading-loose">SQL, MySQL, SQL Server, PowerBI, ETL, Normalización</p>
+      </div>
+
+      <div class="project-list portfolio-shell">
+        {
+          projects.map(project => (
+            <article class={`project-card project-${project.accent}`}>
+              <div class="project-visual">
+                <div class="browser-bar">
+                  <>
+                    <i />
+                    <i />
+                    <i />
+                    <span>{new URL(project.live).hostname}</span>
+                  </>
+                </div>
+                <img
+                  src={project.image}
+                  alt={project.imageAlt}
+                  width="1440"
+                  height="900"
+                />
+              </div>
+              <div class="project-copy">
+                <div class="project-meta">
+                  <>
+                    <span>{project.number}</span>
+                    <span>{project.type}</span>
+                  </>
+                </div>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <strong class="project-impact">{project.impact}</strong>
+                <ul
+                  class="tag-list"
+                  aria-label={`Tecnologías de ${project.title}`}
+                >
+                  {project.stack.map(item => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+                <a
+                  class="project-link"
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Ver proyecto en vivo <span>↗</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="github-callout portfolio-shell">
+        <div>
+          <span class="section-label">También en GitHub</span><h3>
+            Experimentos, APIs y sistemas.
+          </h3>
         </div>
-        <div class="p-6 bg-surface border border-border">
-          <h3 class="text-accent text-sm font-bold mb-4">CLOUD & TOOLS</h3>
-          <p class="text-xs text-muted leading-loose">Git, GitHub, Google Cloud Platform, Scrum, Agile, Requisitos</p>
+        <p>
+          Automatizaciones con IA, backend para retail, herramientas de datos y
+          proyectos académicos que muestran cómo pienso y construyo.
+        </p>
+        <a
+          class="button button-dark"
+          href="https://github.com/nievarodrigo?tab=repositories"
+          target="_blank"
+          rel="noopener">Ver repositorios <span>↗</span></a
+        >
+      </div>
+    </section>
+
+    <section
+      class="capabilities section"
+      id="capacidades"
+      aria-labelledby="capabilities-title"
+    >
+      <div class="portfolio-shell capabilities-grid">
+        <div class="capabilities-intro">
+          <p class="section-label">02 / Qué hago</p>
+          <h2 id="capabilities-title">
+            Del problema<br />al producto.<br /><em>Sin humo.</em>
+          </h2>
         </div>
-        <div class="p-6 bg-surface border border-border">
-          <h3 class="text-accent text-sm font-bold mb-4">IA & HERRAMIENTAS</h3>
-          <p class="text-xs text-muted leading-loose">Claude Code, OpenClaw, Agentes IA, Prompt Engineering, AI Enthusiast</p>
+        <div class="capability-list">
+          {
+            capabilities.map(item => (
+              <article>
+                <>
+                  <span>{item.number}</span>
+                  <div>
+                    <>
+                      <h3>{item.title}</h3>
+                      <p>{item.text}</p>
+                    </>
+                  </div>
+                </>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <section id="projects" class="py-16 border-b border-border">
-      <div class="flex flex-col md:flex-row md:items-baseline gap-2 mb-8">
-        <h2 class="text-2xl font-bold text-white">// Soluciones con impacto real</h2>
-        <span class="text-xs text-muted uppercase tracking-widest">Backend & Data Developer · Freelance · Sept. 2025 — Actualidad</span>
-      </div>
-      <ul class="grid md:grid-cols-2 gap-4">
-        {featuredPosts.map(data => <Card variant="h3" {...data} />)}
-      </ul>
-    </section>
-
-    <section id="education" class="py-16 border-b border-border">
-      <div class="text-accent text-[0.6rem] tracking-[0.4em] uppercase mb-4">// Educación & Cursos</div>
-      <h2 class="text-3xl font-bold text-white mb-10">Formación</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-1 bg-border border border-border">
-        
-        <div class="p-8 bg-background">
-          <div class="text-accent2 text-[0.6rem] uppercase tracking-widest mb-4">Grado universitario</div>
-          <h3 class="text-xl text-white font-bold mb-2">Ingeniería en Informática</h3>
-          <p class="text-sm text-muted mb-4">UADE — Universidad Argentina de la Empresa</p>
-          <div class="text-[0.65rem] text-border uppercase tracking-wider">Ago. 2022 — Ago. 2027 (En curso)</div>
+    <section class="about section" id="sobre-mi" aria-labelledby="about-title">
+      <div class="portfolio-shell about-grid">
+        <div class="about-badge" aria-hidden="true">
+          <span>RN</span><i>PRODUCT<br />BUILDER</i>
         </div>
-
-        <div class="p-8 bg-background">
-          <div class="text-accent2 text-[0.6rem] uppercase tracking-widest mb-4">Curso</div>
-          <h3 class="text-xl text-white font-bold mb-2">Generative AI Zero to Hero Academy</h3>
-          <p class="text-sm text-muted mb-4">Google</p>
-          <div class="text-[0.65rem] text-border uppercase tracking-wider">2026</div>
+        <div class="about-copy">
+          <p class="section-label">03 / Sobre mí</p>
+          <h2 id="about-title">
+            Construyo como ingeniero.<br /><em>Pienso como usuario.</em>
+          </h2>
+          <div class="about-columns">
+            <p>
+              Estudio Ingeniería en Informática en UADE y desarrollo productos
+              propios desde Buenos Aires. Me interesa el punto donde la
+              tecnología deja de ser código y empieza a resolver algo de verdad.
+            </p>
+            <p>
+              Trabajo de punta a punta: entiendo el negocio, diseño la
+              experiencia, construyo el sistema y lo llevo a producción. Uso IA
+              como acelerador, sin delegar el criterio ni la calidad.
+            </p>
+          </div>
+          <div class="credential-row">
+            <span><b>UADE</b> Ingeniería en Informática · en curso</span>
+            <span><b>Google</b> Generative AI · Cloud Foundations</span>
+          </div>
         </div>
-
-        <div class="p-8 bg-background">
-          <div class="text-accent2 text-[0.6rem] uppercase tracking-widest mb-4">Curso</div>
-          <h3 class="text-xl text-white font-bold mb-2">Google Cloud Computing Foundations</h3>
-          <p class="text-sm text-muted mb-4">Google</p>
-          <div class="text-[0.65rem] text-border uppercase tracking-wider">2026</div>
-        </div>
-
       </div>
     </section>
 
-    <section id="contact" class="py-16 text-center">
-      <h2 class="text-3xl font-bold text-white mb-6">¿Trabajamos juntos?</h2>
-      <p class="text-muted max-w-xl mx-auto mb-10 text-sm">
-        Disponible para posiciones de Backend Developer. Si buscás a alguien que construya sistemas robustos y orientados a datos, hablemos.
-      </p>
-      <div class="flex justify-center gap-6">
-        <Socials />
+    <section class="contact" id="contacto" aria-labelledby="contact-title">
+      <div class="portfolio-shell contact-inner">
+        <p class="section-label">04 / Próximo proyecto</p>
+        <h2 id="contact-title">
+          ¿Tenés una idea?<br /><em>Hagámosla real.</em>
+        </h2>
+        <p>
+          Productos web, automatizaciones y landings para negocios que quieren
+          dar el próximo paso.
+        </p>
+        <a class="contact-mail" href="mailto:nievarodrigo40@gmail.com"
+          >nievarodrigo40@gmail.com <span>↗</span></a
+        >
+        <div class="contact-links">
+          <a
+            href="https://github.com/nievarodrigo"
+            target="_blank"
+            rel="noopener">GitHub ↗</a
+          ><a
+            href="https://www.linkedin.com/in/rodrigonieva/"
+            target="_blank"
+            rel="noopener">LinkedIn ↗</a
+          >
+        </div>
       </div>
     </section>
   </main>
-  <Footer />
+
+  <footer class="portfolio-footer">
+    <div class="portfolio-shell">
+      <span>© {new Date().getFullYear()} Rodrigo Nieva</span><span
+        >Diseñado y desarrollado en Buenos Aires</span
+      ><a href="#inicio">Volver arriba ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector("[data-header]");
+    const menuButton = document.querySelector("[data-menu-button]");
+    const mobileNav = document.querySelector("[data-mobile-nav]");
+    const closeMenu = () => {
+      menuButton?.setAttribute("aria-expanded", "false");
+      mobileNav?.classList.remove("is-open");
+      document.body.classList.remove("menu-open");
+    };
+    menuButton?.addEventListener("click", () => {
+      const open = menuButton.getAttribute("aria-expanded") !== "true";
+      menuButton.setAttribute("aria-expanded", String(open));
+      mobileNav?.classList.toggle("is-open", open);
+      document.body.classList.toggle("menu-open", open);
+    });
+    mobileNav
+      ?.querySelectorAll("a")
+      .forEach(link => link.addEventListener("click", closeMenu));
+    window.addEventListener(
+      "scroll",
+      () => header?.classList.toggle("is-scrolled", window.scrollY > 40),
+      { passive: true }
+    );
+  </script>
 </Layout>

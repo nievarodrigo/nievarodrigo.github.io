@@ -2,10 +2,10 @@ export const SITE = {
   website: "https://nievarodrigo.github.io", // replace this with your deployed domain
   author: "Rodrigo Nieva",
   profile: "https://github.com/nievarodrigo",
-  desc: "Ingeniería en Informática. Enfocado en Backend",
-  title: "Rodrigo Nieva portfolio",
-  ogImage: "astropaper-og.jpg",
-  lightAndDarkMode: true,
+  desc: "Diseño y desarrollo productos digitales, SaaS, experiencias realtime y landings que convierten.",
+  title: "Rodrigo Nieva — Product Builder & Software Engineer",
+  ogImage: "portfolio-og.svg",
+  lightAndDarkMode: false,
   postPerIndex: 4,
   postPerPage: 4,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
@@ -24,19 +24,19 @@ export const SITE = {
 
 export const NAV_LINKS = [
   {
-    href: "/#skills",
-    active: true,
-    text: "Skills",
-  },
-  {
-    href: "/posts/",
+    href: "/#proyectos",
     active: true,
     text: "Proyectos",
   },
   {
-    href: "/#education",
+    href: "/#capacidades",
     active: true,
-    text: "Educación",
+    text: "Qué hago",
+  },
+  {
+    href: "/#sobre-mi",
+    active: true,
+    text: "Sobre mí",
   },
   {
     href: "/#contact",
