@@ -101,7 +101,12 @@ body.menu-open {
 }
 .desktop-nav {
   display: flex;
-  gap: 34px;
+  gap: 28px;
+}
+
+.project-link-service {
+  margin-top: 10px;
+  color: var(--pf-violet);
 }
 .desktop-nav a,
 .header-contact {

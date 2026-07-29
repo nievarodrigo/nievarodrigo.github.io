@@ -42,6 +42,7 @@ const projects = [
     image: "/sol-pilates-preview.png",
     imageAlt: "Landing page de Sol Pilates",
     live: "https://solpilates.vercel.app",
+    service: "/presencia-local/",
     accent: "sand",
   },
   {
@@ -98,6 +99,7 @@ const capabilities = [
       </a>
       <nav class="desktop-nav" aria-label="Navegación principal">
         <a href="#proyectos">Proyectos</a>
+        <a href="/presencia-local/">Para negocios</a>
         <a href="#capacidades">Qué hago</a>
         <a href="#sobre-mi">Sobre mí</a>
       </nav>
@@ -121,8 +123,10 @@ const capabilities = [
       data-mobile-nav
     >
       <a href="#proyectos">Proyectos</a><a href="#capacidades">Qué hago</a><a
-        href="#sobre-mi">Sobre mí</a
-      ><a href="mailto:nievarodrigo40@gmail.com">Contacto</a>
+        href="/presencia-local/">Para negocios</a
+      ><a href="#sobre-mi">Sobre mí</a><a href="mailto:nievarodrigo40@gmail.com"
+        >Contacto</a
+      >
     </nav>
   </header>
 
@@ -250,6 +254,14 @@ const capabilities = [
                 >
                   Ver proyecto en vivo <span>↗</span>
                 </a>
+                {project.service && (
+                  <a
+                    class="project-link project-link-service"
+                    href={project.service}
+                  >
+                    Conocer Presencia Local <span>→</span>
+                  </a>
+                )}
               </div>
             </article>
           ))
