@@ -604,6 +604,12 @@ body.menu-open {
 .project-sand .project-meta > span:first-child {
   color: #98713f;
 }
+.project-red .project-visual {
+  background: #170a0a;
+}
+.project-red .project-meta > span:first-child {
+  color: #b61622;
+}
 .github-callout {
   margin-top: 28px;
   padding: 48px;
