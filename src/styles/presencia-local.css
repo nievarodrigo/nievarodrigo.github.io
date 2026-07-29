@@ -614,16 +614,10 @@ body {
   transform: translateY(-7px);
   border-color: var(--pl-mint);
 }
-.pl-case:first-child {
-  grid-row: span 2;
-}
 .pl-case__visual {
   height: 300px;
   overflow: hidden;
   background: #2b333c;
-}
-.pl-case:first-child .pl-case__visual {
-  height: 510px;
 }
 .pl-browser {
   height: 31px;
@@ -1174,10 +1168,6 @@ body {
   .pl-cases {
     grid-template-columns: 1fr;
   }
-  .pl-case:first-child {
-    grid-row: auto;
-  }
-  .pl-case:first-child .pl-case__visual,
   .pl-case__visual {
     height: 300px;
   }
