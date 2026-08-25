@@ -15,6 +15,7 @@ const projects = [
     image: "/filodesk-preview.png",
     imageAlt: "Página principal de FiloDesk",
     live: "https://filodesk.app",
+    code: undefined,
     accent: "gold",
   },
   {
@@ -29,25 +30,26 @@ const projects = [
     image: "/juntadita-preview.png",
     imageAlt: "Página principal de Juntadita",
     live: "https://michucumple.vercel.app",
+    code: undefined,
     accent: "violet",
   },
   {
     number: "03",
-    type: "Diseño web · Servicio",
-    title: "Landings que venden",
+    type: "Diseño web · Trabajo para clientes",
+    title: "Identidades digitales",
     description:
-      "Diseño y desarrollo landings a medida para negocios reales: identidad, mensaje, experiencia responsive y conversión directa a WhatsApp.",
-    impact: "De la idea al sitio publicado, sin plantillas genéricas.",
+      "Una colección de sitios a medida para marcas reales: Sol Pilates, Michelle Pastelería, Punto Café, Complejo MPM y N1EVA Studio.",
+    impact: "Dirección visual, narrativa, frontend responsive y publicación.",
     stack: ["Estrategia", "Copy", "UI/UX", "HTML · CSS · JS", "Vercel"],
     image: "/sol-pilates-preview.png",
     imageAlt: "Landing page de Sol Pilates",
     live: "https://solpilates.vercel.app",
-    service: "/presencia-local/",
+    code: "https://github.com/nievarodrigo/mpm-las-grutas",
     accent: "sand",
   },
   {
     number: "04",
-    type: "Diseño web · Servicio",
+    type: "Dirección visual · Trabajo para cliente",
     title: "N1EVA Studio",
     description:
       "Una página web para un productor musical y filmmaker: identidad visual, trabajos, servicios y contacto directo en una experiencia pensada para su marca.",
@@ -63,7 +65,38 @@ const projects = [
     image: "/n1eva-preview.png",
     imageAlt: "Página principal de N1EVA Studio",
     live: "https://n1eva.vercel.app",
+    code: undefined,
     accent: "red",
+  },
+];
+
+const engineeringProjects = [
+  {
+    status: "FULLSTACK · EN DESARROLLO",
+    title: "AutoservicioQR",
+    description:
+      "Pedidos por QR para cafeterías: menú móvil, carrito, mesas con token y una API preparada para sincronizar el mostrador en tiempo real.",
+    stack: ["React", "FastAPI", "MySQL", "WebSockets", "JWT"],
+    repo: "https://github.com/nievarodrigo/autoservicioQR",
+    mark: "QR",
+  },
+  {
+    status: "IA · AUTOMATIZACIÓN",
+    title: "OpenClaw Inbox Agent",
+    description:
+      "Pipeline multiagente que clasifica Gmail, resume lo importante con Claude y entrega cada mañana un briefing por WhatsApp.",
+    stack: ["Python", "OpenClaw", "Claude", "Gmail IMAP", "Agents"],
+    repo: "https://github.com/nievarodrigo/openclaw-inbox-agent",
+    mark: "AI",
+  },
+  {
+    status: "BACKEND · OPERACIONES",
+    title: "SmartStore Engine",
+    description:
+      "Sistema para almacenes con productos, ventas, fiados, arqueo de caja y métricas operativas sobre una API modular.",
+    stack: ["Python", "FastAPI", "SQLAlchemy", "MySQL", "Pydantic"],
+    repo: "https://github.com/nievarodrigo/smartstore-engine",
+    mark: "API",
   },
 ];
 
@@ -88,9 +121,12 @@ const capabilities = [
 
 <Layout
   title="Rodrigo Nieva — Product Builder & Software Engineer"
-  description="Diseño y desarrollo productos digitales, SaaS, experiencias realtime y landings que convierten."
+  description="Portfolio de Rodrigo Nieva: productos SaaS, experiencias realtime, sistemas fullstack, automatizaciones con IA y trabajo web para clientes."
 >
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <div class="scroll-progress" aria-hidden="true" data-scroll-progress>
+    <span></span>
+  </div>
 
   <header class="portfolio-header" data-header>
     <div class="portfolio-shell header-inner">
@@ -99,8 +135,8 @@ const capabilities = [
       </a>
       <nav class="desktop-nav" aria-label="Navegación principal">
         <a href="#proyectos">Proyectos</a>
-        <a href="/presencia-local/">Para negocios</a>
-        <a href="#capacidades">Qué hago</a>
+        <a href="#ingenieria">Ingeniería</a>
+        <a href="#capacidades">Enfoque</a>
         <a href="#sobre-mi">Sobre mí</a>
       </nav>
       <a class="header-contact" href="mailto:nievarodrigo40@gmail.com"
@@ -122,8 +158,8 @@ const capabilities = [
       aria-label="Navegación móvil"
       data-mobile-nav
     >
-      <a href="#proyectos">Proyectos</a><a href="#capacidades">Qué hago</a><a
-        href="/presencia-local/">Para negocios</a
+      <a href="#proyectos">Proyectos</a><a href="#capacidades">Enfoque</a><a
+        href="#ingenieria">Ingeniería</a
       ><a href="#sobre-mi">Sobre mí</a><a href="mailto:nievarodrigo40@gmail.com"
         >Contacto</a
       >
@@ -135,15 +171,15 @@ const capabilities = [
       <div class="hero-grid portfolio-shell">
         <div class="hero-copy">
           <p class="availability">
-            <span></span>Disponible para proyectos seleccionados
+            <span></span>Portfolio · Rodrigo Nieva · Buenos Aires
           </p>
           <h1>
-            Ideas que se<br />convierten en<br /><em>productos reales.</em>
+            Diseño, código<br />y productos<br /><em>en producción.</em>
           </h1>
           <p class="hero-lead">
-            Soy Rodrigo Nieva. Diseño, construyo y lanzo productos digitales:
-            desde SaaS y experiencias en tiempo real hasta sitios que convierten
-            visitas en clientes.
+            Soy software engineer y product builder. Este es un recorrido por
+            los productos, sistemas y experiencias digitales que diseño,
+            construyo y llevo a producción.
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#proyectos"
@@ -151,42 +187,45 @@ const capabilities = [
             >
             <a
               class="button button-ghost"
-              href="mailto:nievarodrigo40@gmail.com"
-              >Contame tu idea <span>↗</span></a
+              href="https://github.com/nievarodrigo?tab=repositories"
+              target="_blank"
+              rel="noopener">Ver GitHub <span>↗</span></a
             >
           </div>
         </div>
 
         <div class="hero-stage" aria-label="Resumen profesional">
-          <div class="stage-orbit orbit-a"></div><div
+          <div class="stage-orbit orbit-a" data-parallax="0.035"></div><div
             class="stage-orbit orbit-b"
+            data-parallax="-0.055"
           >
           </div>
-          <div class="stage-card stage-card-main">
+          <div class="stage-card stage-card-main" data-parallax="0.075">
             <span class="stage-kicker">Product builder</span>
             <strong>Diseño<br />+ Código<br />+ Negocio</strong>
             <i>Buenos Aires · AR</i>
           </div>
-          <div class="stage-card stage-card-stat">
-            <strong>4</strong><span
-              >productos destacados<br />llevados a producción</span
+          <div class="stage-card stage-card-stat" data-parallax="-0.11">
+            <strong>7</strong><span
+              >casos seleccionados<br />entre producto e ingeniería</span
             >
           </div>
-          <div class="stage-card stage-card-stack">
+          <div class="stage-card stage-card-stack" data-parallax="0.12">
             <span>STACK ACTUAL</span><strong
               >TypeScript · Next.js<br />Supabase · PostgreSQL<br />Python ·
               APIs · IA</strong
             >
           </div>
-          <span class="stage-note">BUILD → LEARN → SHIP</span>
+          <span class="stage-note">PROBLEMA → BUILD → SHIP → LEARN</span>
         </div>
       </div>
       <div class="hero-marquee" aria-hidden="true">
         <div>
-          <span>PRODUCTOS DIGITALES</span><i>✦</i><span>SOFTWARE A MEDIDA</span
-          ><i>✦</i><span>LANDINGS QUE CONVIERTEN</span><i>✦</i><span
+          <span>PRODUCTOS DIGITALES</span><i>✦</i><span
+            >PRODUCT ENGINEERING</span
+          ><i>✦</i><span>SISTEMAS FULLSTACK</span><i>✦</i><span
             >PRODUCTOS DIGITALES</span
-          ><i>✦</i><span>SOFTWARE A MEDIDA</span>
+          ><i>✦</i><span>AUTOMATIZACIONES CON IA</span>
         </div>
       </div>
     </section>
@@ -196,23 +235,27 @@ const capabilities = [
       id="proyectos"
       aria-labelledby="projects-title"
     >
-      <div class="portfolio-shell section-heading">
+      <div class="portfolio-shell section-heading" data-reveal>
         <p class="section-label">01 / Trabajo seleccionado</p>
         <div>
           <h2 id="projects-title">
-            Productos con<br /><em>impacto real.</em>
+            Trabajo<br /><em>seleccionado.</em>
           </h2><p>
-            No son ejercicios de curso. Son ideas diseñadas, construidas y
-            publicadas para resolver problemas concretos.
+            Productos propios y trabajos para clientes. En cada caso participé
+            desde la definición del problema hasta la experiencia y el código.
           </p>
         </div>
       </div>
 
       <div class="project-list portfolio-shell">
         {
-          projects.map(project => (
-            <article class={`project-card project-${project.accent}`}>
-              <div class="project-visual">
+          projects.map((project, index) => (
+            <article
+              class={`project-card project-${project.accent}`}
+              data-reveal
+              style={`--reveal-delay: ${index % 2 === 0 ? 0 : 80}ms`}
+            >
+              <div class="project-visual" data-image-parallax>
                 <div class="browser-bar">
                   <>
                     <i />
@@ -254,12 +297,14 @@ const capabilities = [
                 >
                   Ver proyecto en vivo <span>↗</span>
                 </a>
-                {project.service && (
+                {project.code && (
                   <a
                     class="project-link project-link-service"
-                    href={project.service}
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener"
                   >
-                    Conocer Presencia Local <span>→</span>
+                    Ver código relacionado <span>↗</span>
                   </a>
                 )}
               </div>
@@ -267,22 +312,74 @@ const capabilities = [
           ))
         }
       </div>
+    </section>
 
-      <div class="github-callout portfolio-shell">
+    <section
+      class="engineering section"
+      id="ingenieria"
+      aria-labelledby="engineering-title"
+    >
+      <div
+        class="portfolio-shell section-heading engineering-heading"
+        data-reveal
+      >
+        <p class="section-label">02 / Código abierto</p>
         <div>
-          <span class="section-label">También en GitHub</span><h3>
-            Experimentos, APIs y sistemas.
+          <h2 id="engineering-title">Sistemas por<br /><em>dentro.</em></h2>
+          <p>
+            APIs, tiempo real y automatizaciones. Proyectos donde la
+            arquitectura y las decisiones técnicas también son parte del
+            resultado.
+          </p>
+        </div>
+      </div>
+      <div class="engineering-grid portfolio-shell">
+        {
+          engineeringProjects.map((project, index) => (
+            <article
+              class="engineering-card"
+              data-reveal
+              style={`--reveal-delay: ${index * 90}ms`}
+            >
+              <div class="engineering-mark" aria-hidden="true">
+                <>
+                  <span>{project.mark}</span>
+                  <i />
+                </>
+              </div>
+              <p class="engineering-status">{project.status}</p>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <ul
+                class="tag-list"
+                aria-label={`Tecnologías de ${project.title}`}
+              >
+                {project.stack.map(item => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <a href={project.repo} target="_blank" rel="noopener">
+                Ver repositorio <span>↗</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+      <div class="github-callout portfolio-shell" data-reveal>
+        <div>
+          <span class="section-label">Más trabajo</span><h3>
+            El resto también está en GitHub.
           </h3>
         </div>
         <p>
-          Automatizaciones con IA, backend para retail, herramientas de datos y
-          proyectos académicos que muestran cómo pienso y construyo.
+          Experimentos, herramientas, proyectos académicos y trabajo en curso
+          que completan el recorrido.
         </p>
         <a
           class="button button-dark"
           href="https://github.com/nievarodrigo?tab=repositories"
           target="_blank"
-          rel="noopener">Ver repositorios <span>↗</span></a
+          rel="noopener">Explorar GitHub <span>↗</span></a
         >
       </div>
     </section>
@@ -293,16 +390,16 @@ const capabilities = [
       aria-labelledby="capabilities-title"
     >
       <div class="portfolio-shell capabilities-grid">
-        <div class="capabilities-intro">
-          <p class="section-label">02 / Qué hago</p>
+        <div class="capabilities-intro" data-reveal>
+          <p class="section-label">03 / Mi enfoque</p>
           <h2 id="capabilities-title">
-            Del problema<br />al producto.<br /><em>Sin humo.</em>
+            Del problema<br />al producto.<br /><em>Con criterio.</em>
           </h2>
         </div>
         <div class="capability-list">
           {
-            capabilities.map(item => (
-              <article>
+            capabilities.map((item, index) => (
+              <article data-reveal style={`--reveal-delay: ${index * 80}ms`}>
                 <>
                   <span>{item.number}</span>
                   <div>
@@ -321,11 +418,16 @@ const capabilities = [
 
     <section class="about section" id="sobre-mi" aria-labelledby="about-title">
       <div class="portfolio-shell about-grid">
-        <div class="about-badge" aria-hidden="true">
+        <div
+          class="about-badge"
+          aria-hidden="true"
+          data-reveal
+          data-parallax="0.045"
+        >
           <span>RN</span><i>PRODUCT<br />BUILDER</i>
         </div>
-        <div class="about-copy">
-          <p class="section-label">03 / Sobre mí</p>
+        <div class="about-copy" data-reveal>
+          <p class="section-label">04 / Sobre mí</p>
           <h2 id="about-title">
             Construyo como ingeniero.<br /><em>Pienso como usuario.</em>
           </h2>
@@ -338,7 +440,8 @@ const capabilities = [
             <p>
               Trabajo de punta a punta: entiendo el negocio, diseño la
               experiencia, construyo el sistema y lo llevo a producción. Uso IA
-              como acelerador, sin delegar el criterio ni la calidad.
+              como acelerador, sin delegar el criterio ni la calidad, y comparto
+              en GitHub parte del proceso de lo que voy construyendo.
             </p>
           </div>
           <div class="credential-row">
@@ -350,14 +453,14 @@ const capabilities = [
     </section>
 
     <section class="contact" id="contacto" aria-labelledby="contact-title">
-      <div class="portfolio-shell contact-inner">
-        <p class="section-label">04 / Próximo proyecto</p>
+      <div class="portfolio-shell contact-inner" data-reveal>
+        <p class="section-label">05 / Contacto</p>
         <h2 id="contact-title">
-          ¿Tenés una idea?<br /><em>Hagámosla real.</em>
+          Sigamos la<br /><em>conversación.</em>
         </h2>
         <p>
-          Productos web, automatizaciones y landings para negocios que quieren
-          dar el próximo paso.
+          Si querés hablar de producto, ingeniería, una oportunidad o una
+          colaboración, escribime.
         </p>
         <a class="contact-mail" href="mailto:nievarodrigo40@gmail.com"
           >nievarodrigo40@gmail.com <span>↗</span></a
@@ -389,6 +492,12 @@ const capabilities = [
     const header = document.querySelector("[data-header]");
     const menuButton = document.querySelector("[data-menu-button]");
     const mobileNav = document.querySelector("[data-mobile-nav]");
+    const progress = document.querySelector<HTMLElement>(
+      "[data-scroll-progress] span"
+    );
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
     const closeMenu = () => {
       menuButton?.setAttribute("aria-expanded", "false");
       mobileNav?.classList.remove("is-open");
@@ -403,10 +512,102 @@ const capabilities = [
     mobileNav
       ?.querySelectorAll("a")
       .forEach(link => link.addEventListener("click", closeMenu));
-    window.addEventListener(
-      "scroll",
-      () => header?.classList.toggle("is-scrolled", window.scrollY > 40),
-      { passive: true }
+
+    const revealItems = document.querySelectorAll<HTMLElement>("[data-reveal]");
+    if (reduceMotion) {
+      revealItems.forEach(item => item.classList.add("is-visible"));
+    } else {
+      document.documentElement.classList.add("motion-ready");
+      const revealObserver = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          });
+        },
+        { rootMargin: "0px 0px -10%", threshold: 0.12 }
+      );
+      revealItems.forEach(item => revealObserver.observe(item));
+    }
+
+    const sections = document.querySelectorAll<HTMLElement>("main section[id]");
+    const navLinks = document.querySelectorAll<HTMLAnchorElement>(
+      '.desktop-nav a[href^="#"]'
     );
+    const sectionObserver = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        navLinks.forEach(link => {
+          const active = link.hash === `#${visible.target.id}`;
+          link.classList.toggle("is-active", active);
+          if (active) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
+        });
+      },
+      { rootMargin: "-35% 0px -55%", threshold: [0, 0.2, 0.6] }
+    );
+    sections.forEach(section => sectionObserver.observe(section));
+
+    const parallaxItems = reduceMotion
+      ? []
+      : [...document.querySelectorAll<HTMLElement>("[data-parallax]")];
+    const imageParallaxItems = reduceMotion
+      ? []
+      : [...document.querySelectorAll<HTMLElement>("[data-image-parallax]")];
+    let frameRequested = false;
+
+    const updateScrollMotion = () => {
+      const scrollable = document.documentElement.scrollHeight - innerHeight;
+      const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+      progress?.style.setProperty("transform", `scaleX(${ratio})`);
+      header?.classList.toggle("is-scrolled", window.scrollY > 40);
+
+      parallaxItems.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        if (rect.bottom < -200 || rect.top > innerHeight + 200) return;
+        const speed = Number(item.dataset.parallax ?? 0);
+        const distance = (rect.top + rect.height / 2 - innerHeight / 2) * speed;
+        const limited = Math.max(-48, Math.min(48, distance));
+        item.style.setProperty("--parallax-y", `${limited.toFixed(2)}px`);
+      });
+
+      imageParallaxItems.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > innerHeight) return;
+        const relative =
+          (rect.top + rect.height / 2 - innerHeight / 2) / innerHeight;
+        item.style.setProperty(
+          "--image-y",
+          `${Math.max(-18, Math.min(18, relative * -28)).toFixed(2)}px`
+        );
+      });
+      frameRequested = false;
+    };
+
+    const requestScrollMotion = () => {
+      if (frameRequested) return;
+      frameRequested = true;
+      requestAnimationFrame(updateScrollMotion);
+    };
+    window.addEventListener("scroll", requestScrollMotion, { passive: true });
+    window.addEventListener("resize", requestScrollMotion, { passive: true });
+    requestScrollMotion();
+
+    if (window.location.hash) {
+      document.fonts.ready.then(() => {
+        const target = document.querySelector<HTMLElement>(
+          window.location.hash
+        );
+        target?.scrollIntoView({ block: "start" });
+        target
+          ?.querySelectorAll<HTMLElement>("[data-reveal]")
+          .forEach(item => item.classList.add("is-visible"));
+        requestScrollMotion();
+      });
+    }
   </script>
 </Layout>

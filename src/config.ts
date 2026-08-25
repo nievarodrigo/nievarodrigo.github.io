@@ -2,7 +2,7 @@ export const SITE = {
   website: "https://nievarodrigo.github.io", // replace this with your deployed domain
   author: "Rodrigo Nieva",
   profile: "https://github.com/nievarodrigo",
-  desc: "Diseño y desarrollo productos digitales, SaaS, experiencias realtime y landings que convierten.",
+  desc: "Portfolio de Rodrigo Nieva: productos SaaS, experiencias realtime, sistemas fullstack, automatizaciones con IA y trabajo web para clientes.",
   title: "Rodrigo Nieva — Product Builder & Software Engineer",
   ogImage: "portfolio-og.svg",
   lightAndDarkMode: false,
