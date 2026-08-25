@@ -881,6 +881,9 @@ main section[id] {
   align-items: center;
   background: var(--pf-lime);
 }
+.privacy-callout {
+  grid-template-columns: 0.9fr 1.3fr;
+}
 .github-callout h3 {
   margin: 12px 0 0;
   font-size: 2rem;

@@ -15,7 +15,6 @@ const projects = [
     image: "/filodesk-preview.png",
     imageAlt: "Página principal de FiloDesk",
     live: "https://filodesk.app",
-    code: undefined,
     accent: "gold",
   },
   {
@@ -30,7 +29,6 @@ const projects = [
     image: "/juntadita-preview.png",
     imageAlt: "Página principal de Juntadita",
     live: "https://michucumple.vercel.app",
-    code: undefined,
     accent: "violet",
   },
   {
@@ -44,7 +42,6 @@ const projects = [
     image: "/sol-pilates-preview.png",
     imageAlt: "Landing page de Sol Pilates",
     live: "https://solpilates.vercel.app",
-    code: "https://github.com/nievarodrigo/mpm-las-grutas",
     accent: "sand",
   },
   {
@@ -65,38 +62,40 @@ const projects = [
     image: "/n1eva-preview.png",
     imageAlt: "Página principal de N1EVA Studio",
     live: "https://n1eva.vercel.app",
-    code: undefined,
     accent: "red",
   },
 ];
 
 const engineeringProjects = [
   {
-    status: "FULLSTACK · EN DESARROLLO",
-    title: "AutoservicioQR",
+    status: "SAAS · PRODUCTO ACTIVO",
+    title: "FiloDesk Core",
     description:
-      "Pedidos por QR para cafeterías: menú móvil, carrito, mesas con token y una API preparada para sincronizar el mostrador en tiempo real.",
-    stack: ["React", "FastAPI", "MySQL", "WebSockets", "JWT"],
-    repo: "https://github.com/nievarodrigo/autoservicioQR",
-    mark: "QR",
+      "Arquitectura multi-tenant para gestionar turnos, caja, stock, equipos, permisos y pagos sin mezclar los datos de cada negocio.",
+    stack: ["Next.js", "TypeScript", "Supabase", "RLS", "Pagos"],
+    href: "https://filodesk.app",
+    linkLabel: "Ver producto",
+    mark: "SaaS",
   },
   {
-    status: "IA · AUTOMATIZACIÓN",
-    title: "OpenClaw Inbox Agent",
+    status: "REALTIME · PRODUCTO PROPIO",
+    title: "Juntadita Realtime",
     description:
-      "Pipeline multiagente que clasifica Gmail, resume lo importante con Claude y entrega cada mañana un briefing por WhatsApp.",
-    stack: ["Python", "OpenClaw", "Claude", "Gmail IMAP", "Agents"],
-    repo: "https://github.com/nievarodrigo/openclaw-inbox-agent",
-    mark: "AI",
+      "Sesiones multijugador sincronizadas para que un host controle juegos y todos los invitados participen desde su celular.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Realtime", "Framer Motion"],
+    href: "https://michucumple.vercel.app",
+    linkLabel: "Ver producto",
+    mark: "RT",
   },
   {
-    status: "BACKEND · OPERACIONES",
-    title: "SmartStore Engine",
+    status: "FRONTEND · TRABAJO PUBLICADO",
+    title: "Sistemas visuales",
     description:
-      "Sistema para almacenes con productos, ventas, fiados, arqueo de caja y métricas operativas sobre una API modular.",
-    stack: ["Python", "FastAPI", "SQLAlchemy", "MySQL", "Pydantic"],
-    repo: "https://github.com/nievarodrigo/smartstore-engine",
-    mark: "API",
+      "Interfaces con una identidad distinta para bienestar, gastronomía, turismo y música, construidas para funcionar en cualquier pantalla.",
+    stack: ["UI/UX", "HTML", "CSS", "JavaScript", "Responsive"],
+    href: "#proyectos",
+    linkLabel: "Ver selección",
+    mark: "UI",
   },
 ];
 
@@ -185,11 +184,8 @@ const capabilities = [
             <a class="button button-primary" href="#proyectos"
               >Explorar proyectos <span>↓</span></a
             >
-            <a
-              class="button button-ghost"
-              href="https://github.com/nievarodrigo?tab=repositories"
-              target="_blank"
-              rel="noopener">Ver GitHub <span>↗</span></a
+            <a class="button button-ghost" href="#capacidades"
+              >Cómo trabajo <span>↓</span></a
             >
           </div>
         </div>
@@ -297,16 +293,6 @@ const capabilities = [
                 >
                   Ver proyecto en vivo <span>↗</span>
                 </a>
-                {project.code && (
-                  <a
-                    class="project-link project-link-service"
-                    href={project.code}
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    Ver código relacionado <span>↗</span>
-                  </a>
-                )}
               </div>
             </article>
           ))
@@ -327,8 +313,8 @@ const capabilities = [
         <div>
           <h2 id="engineering-title">Sistemas por<br /><em>dentro.</em></h2>
           <p>
-            APIs, tiempo real y automatizaciones. Proyectos donde la
-            arquitectura y las decisiones técnicas también son parte del
+            Arquitectura, tiempo real y sistemas visuales. Lo importante no es
+            exponer cada archivo: es mostrar las decisiones que sostienen el
             resultado.
           </p>
         </div>
@@ -358,29 +344,27 @@ const capabilities = [
                   <li>{item}</li>
                 ))}
               </ul>
-              <a href={project.repo} target="_blank" rel="noopener">
-                Ver repositorio <span>↗</span>
+              <a
+                href={project.href}
+                target={project.href.startsWith("http") ? "_blank" : undefined}
+                rel={project.href.startsWith("http") ? "noopener" : undefined}
+              >
+                {project.linkLabel} <span>↗</span>
               </a>
             </article>
           ))
         }
       </div>
-      <div class="github-callout portfolio-shell" data-reveal>
+      <div class="github-callout privacy-callout portfolio-shell" data-reveal>
         <div>
-          <span class="section-label">Más trabajo</span><h3>
-            El resto también está en GitHub.
+          <span class="section-label">Código con contexto</span><h3>
+            Las decisiones también son parte del trabajo.
           </h3>
         </div>
         <p>
-          Experimentos, herramientas, proyectos académicos y trabajo en curso
-          que completan el recorrido.
+          El código de productos activos se mantiene privado. Acá muestro el
+          problema, la arquitectura, las decisiones y la experiencia final.
         </p>
-        <a
-          class="button button-dark"
-          href="https://github.com/nievarodrigo?tab=repositories"
-          target="_blank"
-          rel="noopener">Explorar GitHub <span>↗</span></a
-        >
       </div>
     </section>
 
@@ -467,10 +451,6 @@ const capabilities = [
         >
         <div class="contact-links">
           <a
-            href="https://github.com/nievarodrigo"
-            target="_blank"
-            rel="noopener">GitHub ↗</a
-          ><a
             href="https://www.linkedin.com/in/rodrigonieva/"
             target="_blank"
             rel="noopener">LinkedIn ↗</a
