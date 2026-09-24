@@ -36,12 +36,12 @@ const projects = [
     type: "Diseño web · Trabajo para clientes",
     title: "Identidades digitales",
     description:
-      "Una colección de sitios a medida para marcas reales: Sol Pilates, Michelle Pastelería, Punto Café, Complejo MPM y N1EVA Studio.",
+      "Una colección de sitios a medida para marcas reales: Punto Café, Michelle Pastelería, Sol Pilates, Complejo MPM y N1EVA Studio.",
     impact: "Dirección visual, narrativa, frontend responsive y publicación.",
     stack: ["Estrategia", "Copy", "UI/UX", "HTML · CSS · JS", "Vercel"],
-    image: "/sol-pilates-preview.png",
-    imageAlt: "Landing page de Sol Pilates",
-    live: "https://solpilates.vercel.app",
+    image: "/puntocafe-preview.png",
+    imageAlt: "Landing page de Punto Café",
+    live: "https://puntocafe-nine.vercel.app",
     accent: "sand",
   },
   {
@@ -99,6 +99,26 @@ const engineeringProjects = [
   },
 ];
 
+const stackLogos = [
+  { slug: "typescript", name: "TypeScript" },
+  { slug: "nextdotjs", name: "Next.js" },
+  { slug: "react", name: "React" },
+  { slug: "supabase", name: "Supabase" },
+  { slug: "postgresql", name: "PostgreSQL" },
+  { slug: "python", name: "Python" },
+  { slug: "tailwindcss", name: "Tailwind CSS" },
+  { slug: "framer", name: "Framer Motion" },
+  { slug: "vercel", name: "Vercel" },
+  { slug: "git", name: "Git" },
+];
+
+const aboutFacts = [
+  { label: "Base", value: "Buenos Aires, Argentina" },
+  { label: "Formación", value: "Ing. Informática · UADE" },
+  { label: "Certificaciones", value: "Google · Gen AI & Cloud" },
+  { label: "Stack", value: "TypeScript · Next.js · PostgreSQL" },
+];
+
 const capabilities = [
   {
     number: "01",
@@ -119,8 +139,8 @@ const capabilities = [
 ---
 
 <Layout
-  title="Rodrigo Nieva — Product Builder & Software Engineer"
-  description="Portfolio de Rodrigo Nieva: productos SaaS, experiencias realtime, sistemas fullstack, automatizaciones con IA y trabajo web para clientes."
+  title="Rodrigo Nieva — Software Engineer"
+  description="Portfolio de Rodrigo Nieva: productos SaaS en producción, experiencias realtime, sistemas fullstack y automatizaciones con IA."
 >
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <div class="scroll-progress" aria-hidden="true" data-scroll-progress>
@@ -139,7 +159,7 @@ const capabilities = [
         <a href="#sobre-mi">Sobre mí</a>
       </nav>
       <a class="header-contact" href="mailto:nievarodrigo40@gmail.com"
-        >Hablemos <span>↗</span></a
+        >Contacto <span>↗</span></a
       >
       <button
         class="mobile-menu-button"
@@ -159,8 +179,8 @@ const capabilities = [
     >
       <a href="#proyectos">Proyectos</a><a href="#capacidades">Enfoque</a><a
         href="#ingenieria">Ingeniería</a
-      ><a href="#sobre-mi">Sobre mí</a><a href="mailto:nievarodrigo40@gmail.com"
-        >Contacto</a
+      ><a href="#sobre-mi">Sobre mí</a><a
+        href="mailto:nievarodrigo40@gmail.com">Contacto</a
       >
     </nav>
   </header>
@@ -176,9 +196,9 @@ const capabilities = [
             Diseño, código<br />y productos<br /><em>en producción.</em>
           </h1>
           <p class="hero-lead">
-            Soy software engineer y product builder. Este es un recorrido por
-            los productos, sistemas y experiencias digitales que diseño,
-            construyo y llevo a producción.
+            Estudiante de Ingeniería en Informática (UADE) y software engineer.
+            Construyo y sostengo productos en producción: entiendo el problema,
+            diseño la experiencia y escribo el código.
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="#proyectos"
@@ -246,8 +266,11 @@ const capabilities = [
       <div class="project-list portfolio-shell">
         {
           projects.map((project, index) => (
-            <article
+            <a
               class={`project-card project-${project.accent}`}
+              href={project.live}
+              target="_blank"
+              rel="noopener"
               data-reveal
               style={`--reveal-delay: ${index % 2 === 0 ? 0 : 80}ms`}
             >
@@ -265,7 +288,24 @@ const capabilities = [
                   alt={project.imageAlt}
                   width="1440"
                   height="900"
+                  loading="lazy"
+                  decoding="async"
                 />
+                <div class="project-overlay">
+                  <p>{project.description}</p>
+                  <strong>{project.impact}</strong>
+                  <ul
+                    class="tag-list"
+                    aria-label={`Tecnologías de ${project.title}`}
+                  >
+                    {project.stack.map(item => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                  <span class="project-overlay-link">
+                    Ver proyecto en vivo <i>↗</i>
+                  </span>
+                </div>
               </div>
               <div class="project-copy">
                 <div class="project-meta">
@@ -275,28 +315,37 @@ const capabilities = [
                   </>
                 </div>
                 <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <strong class="project-impact">{project.impact}</strong>
-                <ul
-                  class="tag-list"
-                  aria-label={`Tecnologías de ${project.title}`}
-                >
-                  {project.stack.map(item => (
-                    <li>{item}</li>
-                  ))}
-                </ul>
-                <a
-                  class="project-link"
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Ver proyecto en vivo <span>↗</span>
-                </a>
+                <p class="project-stackline">{project.stack.join(" · ")}</p>
               </div>
-            </article>
+            </a>
           ))
         }
+      </div>
+    </section>
+
+    <section class="services section" aria-label="Stack actual">
+      <div class="stack-ticker" data-reveal>
+        <p class="stack-ticker-label">Stack actual</p>
+        <div class="stack-ticker-viewport">
+          <div class="stack-ticker-track">
+            {
+              [0, 1].map(pass =>
+                stackLogos.map(logo => (
+                  <span class="stack-logo" aria-hidden={pass === 1}>
+                    <img
+                      src={`https://cdn.simpleicons.org/${logo.slug}/f4f2ec`}
+                      alt={pass === 0 ? logo.name : ""}
+                      width="26"
+                      height="26"
+                      loading="lazy"
+                    />
+                    <i>{logo.name}</i>
+                  </span>
+                ))
+              )
+            }
+          </div>
+        </div>
       </div>
     </section>
 
@@ -428,10 +477,18 @@ const capabilities = [
               en GitHub parte del proceso de lo que voy construyendo.
             </p>
           </div>
-          <div class="credential-row">
-            <span><b>UADE</b> Ingeniería en Informática · en curso</span>
-            <span><b>Google</b> Generative AI · Cloud Foundations</span>
-          </div>
+          <dl class="about-facts">
+            {
+              aboutFacts.map(fact => (
+                <div class="about-fact">
+                  <>
+                    <dt>{fact.label}</dt>
+                    <dd>{fact.value}</dd>
+                  </>
+                </div>
+              ))
+            }
+          </dl>
         </div>
       </div>
     </section>
@@ -443,8 +500,8 @@ const capabilities = [
           Sigamos la<br /><em>conversación.</em>
         </h2>
         <p>
-          Si querés hablar de producto, ingeniería, una oportunidad o una
-          colaboración, escribime.
+          Estoy abierto a sumarme a un equipo donde pueda seguir construyendo y
+          aprendiendo. Escribime y te respondo.
         </p>
         <a class="contact-mail" href="mailto:nievarodrigo40@gmail.com"
           >nievarodrigo40@gmail.com <span>↗</span></a

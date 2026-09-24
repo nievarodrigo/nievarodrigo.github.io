@@ -11,10 +11,6 @@ const { pathname } = Astro.url;
 const currentPath =
   pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
 
-const isActive = (path: string) => {
-  return currentPath === path;
-};
-
 // Verificamos si estamos en la Home
 const isHome = currentPath === "" || currentPath === "/";
 ---
@@ -61,10 +57,10 @@ const isHome = currentPath === "" || currentPath === "/";
           "hidden",
         ]}
       >
-        <li><a href="/#skills">Skills</a></li>
-        <li><a href="/posts" class:list={{ "active-nav": isActive("/posts") }}>Proyectos</a></li>
-        <li><a href="/#education">Educación</a></li>
-        <li><a href="/#contact">Contacto</a></li>
+        <li><a href="/#proyectos">Proyectos</a></li>
+        <li><a href="/#capacidades">Enfoque</a></li>
+        <li><a href="/#sobre-mi">Sobre mí</a></li>
+        <li><a href="/#contacto">Contacto</a></li>
         
         {SITE.lightAndDarkMode && (
           <li class="col-span-2 flex items-center justify-center sm:col-span-1">
